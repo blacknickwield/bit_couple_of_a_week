@@ -21,4 +21,6 @@ public interface CoupleService {
 
     Couple acceptCouple(Integer coupleId, Integer id);
     Couple rejectCouple(Integer id);
+    Couple getOngoingCoupleByMaleId(Integer maleId);
+    Couple getOngoingCoupleByFemaleId(Integer femaleId);
 }

@@ -28,4 +28,6 @@ public class Post {
     private String femaleContent;
     @Column(name = "female_url")
     private String femaleUrl;
+    @Column(name = "time")
+    private String time;
 }

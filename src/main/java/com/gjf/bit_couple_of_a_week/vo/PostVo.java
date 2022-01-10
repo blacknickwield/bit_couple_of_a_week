@@ -20,6 +20,7 @@ public class PostVo {
     private String maleUrl;
     private String femaleContent;
     private String femaleUrl;
+    private String time;
 
     public PostVo() {
     }
@@ -111,6 +112,7 @@ public class PostVo {
         post.setMaleUrl(postVo.getMaleUrl());
         post.setFemaleContent(postVo.getFemaleContent());
         post.setFemaleUrl(postVo.getFemaleUrl());
+        post.setTime(postVo.getTime());
         return post;
     }
 
@@ -126,6 +128,7 @@ public class PostVo {
         postVo.setFemaleUrl(post.getFemaleUrl());
         postVo.setMaleContent(post.getMaleContent());
         postVo.setMaleUrl(post.getMaleUrl());
+        postVo.setTime(post.getTime());
         return postVo;
     }
 }

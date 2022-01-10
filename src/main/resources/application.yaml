@@ -21,6 +21,10 @@ spring:
 #  time-between-eviction-runs-millis: 200000
 #  #配置连接在连接池的最小生存时间
 #  remove-abandoned-on-maintenance: 200000
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 30MB
 
   jpa:
     #配置数据库类型
@@ -37,4 +41,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+
+IdWorker:
+  workerId: 1
+  datacenterId: 1
+  sequence: 1
 

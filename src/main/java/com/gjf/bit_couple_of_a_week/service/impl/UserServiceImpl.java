@@ -56,7 +56,10 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     @Override
     public User getUserById(Integer id) {
-        return userRepository.findUserById(id);
+        User user = userRepository.findUserById(id);
+        if (user == null)
+            throw new UserDaoException("不存在该用户!");
+        return user;
     }
 
     @Override

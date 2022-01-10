@@ -30,7 +30,7 @@ public class CoupleController {
      * @return responseResult
      */
     @PostMapping("/launch")
-    public ResponseResult launch(@RequestBody(required = true) CoupleVo coupleVo) {
+    public ResponseResult launch(@RequestBody() CoupleVo coupleVo) {
         System.out.println(coupleVo);
         Couple couple = CoupleVo.convertToPo(coupleVo);
         Integer id = null;

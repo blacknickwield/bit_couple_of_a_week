@@ -160,4 +160,20 @@ public class CoupleServiceImpl implements CoupleService {
         coupleRepository.save(couple);
         return couple;
     }
+
+    @Override
+    public Couple getOngoingCoupleByMaleId(Integer maleId) {
+        Couple couple = coupleRepository.findOngoingCoupleByMaleId(maleId, CoupleStatus.ONGOING.getStatus());
+        if (couple == null)
+            throw new CoupleDaoException("您当前没有正在进行的CP活动");
+        return couple;
+    }
+
+    @Override
+    public Couple getOngoingCoupleByFemaleId(Integer femaleId) {
+        Couple couple = coupleRepository.findOngoingCoupleByFemaleId(femaleId, CoupleStatus.ONGOING.getStatus());
+        if (couple == null)
+            throw new CoupleDaoException("您当前没有正在进行的CP活动");
+        return couple;
+    }
 }

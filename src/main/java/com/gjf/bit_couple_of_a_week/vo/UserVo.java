@@ -11,6 +11,7 @@ public class UserVo {
     private String username;
     private String password;
     private String name;
+    private String schoolId;
     private String imgUrl;
     private Boolean male;
     private String description;
@@ -96,7 +97,7 @@ public class UserVo {
         user.setUsername(userVo.getUsername());
         user.setImgUrl(userVo.getImgUrl());
         user.setMale(userVo.getMale());
-
+        user.setSchoolId(userVo.schoolId);
         user.setDescription(userVo.getDescription());
         return user;
     }
@@ -110,6 +111,7 @@ public class UserVo {
         userVo.setUsername(user.getUsername());
         userVo.setImgUrl(user.getImgUrl());
         userVo.setMale(user.getMale());
+        userVo.setSchoolId(user.getSchoolId());
         userVo.setDescription(user.getDescription());
         return userVo;
     }
