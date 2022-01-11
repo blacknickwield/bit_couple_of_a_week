@@ -12,4 +12,10 @@ public interface PostService {
     List<Post> getAllPost();
 
     Post getPostById(Integer id);
+
+    List<Post> getAllPostByUserId(Integer id);
+
+    Post getTodayPostByCoupleId(Integer id);
+
+    Post save(Post post);
 }

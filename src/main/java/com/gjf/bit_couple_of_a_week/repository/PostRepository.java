@@ -21,4 +21,7 @@ public interface PostRepository extends CrudRepository<Post, Integer>, JpaSpecif
 
     @Query(nativeQuery = true, value = "SELECT * FROM `post` WHERE `couple_id` = :coupleId AND `time` = :time")
     Post findPostByCoupleIdAndTime(@Param("coupleId") Integer coupleId, @Param("time") String time);
+
+    @Query(nativeQuery = true, value = "SELECT * FROM `post` WHERE `male_id` = :id OR `female_id` = :id")
+    List<Post> findAllByUserId(@Param("id") Integer id);
 }

@@ -35,7 +35,7 @@ public class CoupleController {
         Couple couple = CoupleVo.convertToPo(coupleVo);
         Integer id = null;
         // 对方用户的id
-        if (couple.getLauncher().equals(couple.getMaleId())) {
+        if (couple.getLauncher().intValue() ==  couple.getMaleId().intValue()) {
             id = couple.getFemaleId();
         } else {
             id = couple.getMaleId();
@@ -44,7 +44,7 @@ public class CoupleController {
         User user = userService.getUserById(id);
         if (user == null)
             throw new CoupleDaoException("未找到目标用户，请重新检查cp请求！");
-        couple.setStatus(NEW.getStatus());
+//        couple.setStatus(NEW.getStatus());
         coupleService.addNewCouple(couple);
         return new ResponseResult()
                 .code(200)
@@ -92,7 +92,7 @@ public class CoupleController {
     }
 
     /***
-     * 查看自己发起的新的cp请求
+     * 查看自己发起的新的cp请求（任意时刻每个人至多只能有1个处于NEW状态的cp请求）
      * @param id
      * @return
      */
@@ -105,7 +105,7 @@ public class CoupleController {
     }
 
     /***
-     * 查看自己发起的所有cp请求
+     * 查看自己发起的所有cp请求（历史记录）
      * @param id
      * @return
      */

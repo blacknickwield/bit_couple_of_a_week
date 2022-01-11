@@ -28,7 +28,7 @@ public class PostController {
     private CoupleService coupleService;
 
     @GetMapping("/query")
-    public ResponseResult getPostById(@Param("id") Integer id) {
+    public ResponseResult getPostById(@RequestParam("id") Integer id) {
         return new ResponseResult()
                 .code(200)
                 .data("postInfo", PostVo.convertToVo(postService.getPostById(id)))
@@ -41,7 +41,7 @@ public class PostController {
      * @return
      */
     @PostMapping("/post")
-    public ResponseResult post(@Param("id") Integer id, @RequestBody() PostVo postVo) {
+    public ResponseResult post(@RequestParam("id") Integer id, @RequestBody() PostVo postVo) {
         User user = userService.getUserById(id);
         Post post = PostVo.convertToPo(postVo);
         Couple couple;
@@ -55,7 +55,7 @@ public class PostController {
         return new ResponseResult()
                 .code(200)
                 .data("postInfo", post)
-                .message("您的帖子已发送，请等待CP填写");
+                .message("您的帖子已发送，请等待您的CP填写");
     }
 
     /***
@@ -69,7 +69,23 @@ public class PostController {
                 .code(200)
                 .data("posts", postService.getAllPost()
                         .stream()
-                        .map(post -> PostVo.convertToVo(post))
+                        .map(PostVo::convertToVo)
+                        .collect(Collectors.toList()))
+                .message("查询成功");
+    }
+
+    /***
+     * 查看自己发送过的所有帖子
+     * @param id
+     * @return
+     */
+    @GetMapping("my")
+    public ResponseResult getMyPost(@RequestParam("id") Integer id) {
+        return new ResponseResult()
+                .code(200)
+                .data("posts", postService.getAllPostByUserId(id)
+                        .stream()
+                        .map(PostVo::convertToVo)
                         .collect(Collectors.toList()))
                 .message("查询成功");
     }

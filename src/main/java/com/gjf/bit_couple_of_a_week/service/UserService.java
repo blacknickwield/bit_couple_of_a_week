@@ -13,4 +13,5 @@ public interface UserService {
     User register(User user);
     User getUserById(Integer id);
     List<User> getAllUser();
+    User save(User user);
 }

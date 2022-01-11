@@ -45,7 +45,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/register")
-    public ResponseResult register(@RequestBody(required = true) UserVo userVo) {
+    public ResponseResult register(@RequestBody() UserVo userVo) {
         User user = UserVo.convertToPo(userVo);
         userService.register(user);
         user.setPassword(null);
