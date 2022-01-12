@@ -48,6 +48,11 @@ public class CoupleServiceImpl implements CoupleService {
     }
 
     @Override
+    public Couple getMyOngoingCouple(Integer id) {
+        return coupleRepository.findMyOngoingCouple(id, CoupleStatus.ONGOING.getStatus());
+    }
+
+    @Override
     public Couple randomAddNewCoupleForMale(Integer maleId) {
         List<Couple> couples = coupleRepository.findNewCoupleAppliedByFemale();
         // 没有发起CP请求的女用户，该男用户发起请求

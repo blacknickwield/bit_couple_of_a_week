@@ -24,6 +24,15 @@ public class CoupleController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/myOngoing")
+    public ResponseResult getOngoingCoupleAppliedByMyself(@RequestParam(name = "id") Integer id) {
+        return new ResponseResult()
+                .code(200)
+                .data("couple", CoupleVo.convertToVo(coupleService.getMyOngoingCouple(id)))
+                .message("请求成功");
+    }
+
+
     /***
      * 发起组成cp的请求（需指明对方的id）
      * @param coupleVo
@@ -96,7 +105,7 @@ public class CoupleController {
      * @param id
      * @return
      */
-    @GetMapping("/my")
+    @GetMapping("/myNew")
     public ResponseResult getNewCoupleAppliedByMyself(@RequestParam(name = "id") Integer id) {
         return new ResponseResult()
                 .code(200)

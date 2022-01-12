@@ -13,6 +13,9 @@ public interface CoupleRepository extends CrudRepository<Couple, Integer>, JpaSp
     @Query(nativeQuery = true, value = "SELECT * FROM `couple` WHERE `id` = :id")
     Couple findCoupleById(@Param("id") Integer id);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM `couple` WHERE (`male` = :id OR `female` = :id) AND `status` = :ongoing")
+    Couple findMyOngoingCouple(@Param("id") Integer id, @Param("ongoing") String ongoing);
+
     @Query(nativeQuery = true, value = "SELECT * FROM `couple` WHERE `launcher` = :otherId AND ((`male` = :other AND `female` = :id) OR (`female` = :otherId AND `male` = :id))")
     List<Couple> getCoupleAppliedByOther(@Param("id") Integer id, @Param("otherId") Integer otherId);
 
@@ -48,4 +51,5 @@ public interface CoupleRepository extends CrudRepository<Couple, Integer>, JpaSp
 
     @Query(nativeQuery = true, value = "SELECT * FROM `couple` WHERE `female` = :femaleId AND `status` = :ongoing")
     Couple findOngoingCoupleByFemaleId(@Param("femaleId") Integer femaleId, @Param("ongoing") String ongoing);
+
 }

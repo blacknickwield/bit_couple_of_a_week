@@ -8,6 +8,7 @@ import java.util.List;
 public interface CoupleService {
     Couple addNewCouple(Couple couple);
 
+    Couple getMyOngoingCouple(Integer id);
     Couple randomAddNewCoupleForMale(Integer maleId);
     Couple randomAddNewCoupleForFemale(Integer femaleId);
 
